@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PopChoice</title>
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto+Slab:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <!--My Styles-->
@@ -25,16 +27,22 @@
     </header>
     <main class="main">
       <form class="main__form">
-        <label for="question-1">What's your favorite movie and why?</label>
-        <textarea name="question" id="question-1"></textarea>
-        <label for="question-2"
-          >Are you in the moood for something new or a classic?</label
-        >
-        <textarea name="question" id="question-2"></textarea>
-        <label for="question-3"
-          >Do you wanna have fun or do you want something serious?</label
-        >
-        <textarea name="question" id="question-3"></textarea>
+        <div class="main__form--question">
+          <label for="question-1">What's your favorite movie and why?</label>
+          <textarea name="question" id="question-1" rows="3"></textarea>
+        </div>
+        <div class="main__form--question">
+          <label for="question-2"
+            >Are you in the mood for something new or a classic?</label
+          >
+          <textarea name="question" id="question-2" rows="2"></textarea>
+        </div>
+        <div class="main__form--question">
+          <label for="question-3"
+            >Do you wanna have fun or do you want something serious?</label
+          >
+          <textarea name="question" id="question-3" rows="2"></textarea>
+        </div>
         <button id="submit-form">Let's Go</button>
       </form>
     </main>
