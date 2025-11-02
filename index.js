@@ -1,1 +1,1 @@
-import { openai, supabase } from './config.js';
+import { openai, supabase } from "./config.js";
