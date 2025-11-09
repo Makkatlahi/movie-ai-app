@@ -1,4 +1,5 @@
 /* 
+     Insert movies into database [Supabase]
      Get the input from the user from all the form fields
      Combine them into one big string
      Create a vector embedding for that string
@@ -46,8 +47,30 @@ async function insertMoviesIntoDatabase() {
   }
 }
 
-submitBtn.addEventListener("click", (e) => {
+async function convertInputIntoEmbeddings(combinedQuestions) {
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-ada-002",
+    input: combinedQuestions,
+  });
+  const { data, error } = await supabase.rpc("match_movies", {
+    query_embedding: embedding.data[0].embedding,
+    match_threshold: 0.5,
+    match_count: 1,
+  });
+
+  if (error) console.error("Error finding match: ", error);
+  return data;
+}
+
+submitBtn.addEventListener("click", async (e) => {
   e.preventDefault();
+  const question1 = document.getElementById("question-1").value;
+  const question2 = document.getElementById("question-2").value;
+  const question3 = document.getElementById("question-3").value;
+  const combinedQuestions = `${question1} ${question2} ${question3}`;
+  const recommendation = await convertInputIntoEmbeddings(combinedQuestions);
+  const form = document.getElementById("main__form");
+  form.reset();
 });
 
-insertMoviesIntoDatabase();
+// insertMoviesIntoDatabase();
