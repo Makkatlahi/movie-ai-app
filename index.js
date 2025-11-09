@@ -7,6 +7,8 @@
 import { openai, supabase } from "./config.js";
 import movies from "./content.js";
 
+const submitBtn = document.getElementById("submit-form");
+
 // calling the openai api to create vector embeddings for the input
 async function insertMoviesIntoDatabase() {
   //Check if movies already exist
@@ -43,5 +45,9 @@ async function insertMoviesIntoDatabase() {
     }
   }
 }
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+});
 
 insertMoviesIntoDatabase();
