@@ -11,7 +11,7 @@ export const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-/** Supabase config */
+/** Supabase config [How to connect to your project database]*/
 const privateKey = import.meta.env.VITE_SUPABASE_API_KEY;
 if (!privateKey) throw new Error(`Expected env var SUPABASE_API_KEY`);
 const url = import.meta.env.VITE_SUPABASE_URL;
